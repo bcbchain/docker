@@ -30,9 +30,9 @@ function osDetect {
 
 osver=$(osDetect)
 if [[ "${osver}" = "centos7" ]]; then
-  yum update -y && yum install epel-release -y && yum install docker -y && systemctl start docker
+  yum update -y && yum install epel-release -y && yum install docker -y && systemctl enable docker && systemctl start docker
 elif [[ "${osver}" = "ubuntu18" ]]; then
-  apt update && apt upgrade -y && apt install docker.io -y && systemctl start docker
+  apt update && apt upgrade -y && apt install docker.io -y && systemctl enable docker && systemctl start docker
 else
   echo ${osver}
   exit 1

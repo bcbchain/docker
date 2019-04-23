@@ -30,9 +30,9 @@ function osDetect {
 
 osver=$(osDetect)
 if [[ "${osver}" = "centos7" ]]; then
-  tar xvf docker.allrpm.tar.gz && yum localinstall *.rpm  -y && rm -f *.rpm && systemctl start docker
+  tar xvf docker.allrpm.tar.gz && yum localinstall *.rpm  -y && rm -f *.rpm && systemctl enable docker && systemctl start docker
 elif [[ "${osver}" = "ubuntu18" ]]; then
-  tar xvf docker.io.alldeb.tar.gz && dpkg -i *.deb && rm -f *.deb && systemctl start docker
+  tar xvf docker.io.alldeb.tar.gz && dpkg -i *.deb && rm -f *.deb && systemctl enable docker && systemctl start docker
 else
   echo ${osver}
   exit 1
